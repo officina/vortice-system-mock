@@ -1,13 +1,19 @@
 <template>
   <div class="about">
-    <h1>Backend Resources Demo</h1>
+    <div class="loading" v-if="loading">
+      Loading...
+    </div>
+    <div v-if="system">
+    <h1>{{system.label}}</h1>
     <p>Click on the links below to fetch data from the Flask server</p>
-
+    <div  v-for="device in system.devices" v-bind:key="device.systemId">
+      <mono-device :device = "device"></mono-device>
+    </div>
     <a href="" @click.prevent="fetchSecureResource">Fetch System info</a>
-    <h4>Results</h4>
-    <p v-for="r in resources" :key="r.systemId">
-      SystemId: {{r | json }}
-    </p>
+    <h4>System descriptor</h4>
+
+    <pre>{{system | json }}</pre>
+    </div>
     <p>{{error}}</p>
   </div>
 </template>
@@ -15,29 +21,30 @@
 <script>
 
 import $backend from '../backend'
+import MonoDevice from '../components/MonoDevice'
 
 export default {
+  created () {
+    this.fetchSecureResource()
+  },
   name: 'about',
+  components: {MonoDevice},
   data () {
     return {
-      resources: [],
+      loading: false,
+      system: {},
       error: ''
     }
   },
   methods: {
-    fetchResource () {
-      $backend.fetchResource()
-        .then(responseData => {
-          this.resources.push(responseData)
-        }).catch(error => {
-          this.error = error.message
-        })
-    },
     fetchSecureResource () {
+      this.loading = true
       $backend.fetchSecureResource()
         .then(responseData => {
-          this.resources.push(responseData)
+          this.loading = false
+          this.system = responseData
         }).catch(error => {
+          this.loading = false
           this.error = error.message
         })
     }

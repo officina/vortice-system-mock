@@ -6,9 +6,8 @@
     </div>
     <div id="logos">
       <p>
-        <img src="@/assets/vue-logo.png">
-        <span id="plus">+</span>
-        <img src="@/assets/flask-logo.png">
+        <img src="@/assets/vortice-logo.gif" class="picture small">
+
       </p>
     </div>
     <router-view/>
