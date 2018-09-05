@@ -4,15 +4,15 @@
       Loading...
     </div>
     <div v-if="system">
-    <h1>{{system.label}}</h1>
-    <p>Click on the links below to fetch data from the Flask server</p>
-    <div  v-for="device in system.devices" v-bind:key="device.systemId">
-      <mono-device :device = "device"></mono-device>
-    </div>
-    <a href="" @click.prevent="fetchSecureResource">Fetch System info</a>
-    <h4>System descriptor</h4>
-
-    <pre>{{system | json }}</pre>
+      <system :system="system"></system>
+      <b-container fluid>
+        <b-row class="mb-3" v-for="(data, index) in chunkedDevices" v-bind:key="index">
+          <b-col md="6" v-for="device in data" v-bind:key="device.systemId">
+            <mono-device :device = "device"></mono-device>
+          </b-col>
+        </b-row>
+      </b-container>
+      <a href="" @click.prevent="fetchSecureResource">Fetch System info</a>
     </div>
     <p>{{error}}</p>
   </div>
@@ -22,13 +22,17 @@
 
 import $backend from '../backend'
 import MonoDevice from '../components/MonoDevice'
+import _ from 'lodash'
+import System from '../components/System'
 
 export default {
   created () {
     this.fetchSecureResource()
   },
   name: 'about',
-  components: {MonoDevice},
+  components: {
+    System,
+    MonoDevice},
   data () {
     return {
       loading: false,
@@ -48,10 +52,12 @@ export default {
           this.error = error.message
         })
     }
+  },
+  computed: {
+    chunkedDevices () {
+      return _.chunk(this.system.devices, 2)
+    }
   }
 }
 
 </script>
-
-<style lang="scss">
-</style>
