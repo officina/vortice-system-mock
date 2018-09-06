@@ -4,11 +4,11 @@
       Loading...
     </div>
     <div v-if="system">
-      <system :system="system"></system>
+      <system :system="system" :owner="getOwner()"></system>
       <b-container fluid>
         <b-row class="mb-3" v-for="(data, index) in chunkedDevices" v-bind:key="index">
           <b-col md="6" v-for="device in data" v-bind:key="device.systemId">
-            <mono-device :device = "device"></mono-device>
+            <mono-device :device = "device" :room="getRoom(device.roomId)"></mono-device>
           </b-col>
         </b-row>
       </b-container>
@@ -32,7 +32,8 @@ export default {
   name: 'about',
   components: {
     System,
-    MonoDevice},
+    MonoDevice
+  },
   data () {
     return {
       loading: false,
@@ -51,6 +52,20 @@ export default {
           this.loading = false
           this.error = error.message
         })
+    },
+    getRoom (roomId) {
+      for (let room of this.system.rooms) {
+        if (room.hasOwnProperty('id') && room.id === roomId) {
+          return room
+        }
+      }
+    },
+    getOwner () {
+      for (let user of this.system.users) {
+        if (user.hasOwnProperty('userId') && user.userId === this.system.ownerId) {
+          return user
+        }
+      }
     }
   },
   computed: {
