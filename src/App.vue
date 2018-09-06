@@ -1,13 +1,8 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/api">API Sample</router-link>
-    </div>
     <div id="logos">
       <p>
         <img src="@/assets/vortice-logo.gif" class="picture small">
-
       </p>
     </div>
     <router-view/>

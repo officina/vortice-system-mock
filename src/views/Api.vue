@@ -27,7 +27,7 @@ import System from '../components/System'
 
 export default {
   created () {
-    this.fetchSecureResource()
+    this.fetchSecureResource(this.$route.query.systemId)
   },
   name: 'about',
   components: {
@@ -42,9 +42,9 @@ export default {
     }
   },
   methods: {
-    fetchSecureResource () {
+    fetchSecureResource (systemId) {
       this.loading = true
-      $backend.fetchSecureResource()
+      $backend.fetchSecureResource(systemId)
         .then(responseData => {
           this.loading = false
           this.system = responseData

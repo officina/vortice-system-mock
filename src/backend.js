@@ -23,13 +23,13 @@ $axios.interceptors.response.use(function (response) {
 
 export default {
 
-  fetchResource () {
-    return $axios.get(`https://5hqo4qcoek.execute-api.eu-west-1.amazonaws.com/dev/vortice/public/systems/1535727414639`)
+  fetchResource (systemID) {
+    return $axios.get(`https://5hqo4qcoek.execute-api.eu-west-1.amazonaws.com/dev/vortice/public/systems/` + systemID)
       .then(response => response.data)
   },
 
-  fetchSecureResource () {
-    return $axios.get(`https://5hqo4qcoek.execute-api.eu-west-1.amazonaws.com/dev/vortice/public/systems/1535727414639`)
+  fetchSecureResource (systemID) {
+    return $axios.get(`https://5hqo4qcoek.execute-api.eu-west-1.amazonaws.com/dev/vortice/public/systems/` + systemID)
       .then(response => response.data)
   }
 }
