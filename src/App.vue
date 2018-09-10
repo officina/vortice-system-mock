@@ -2,7 +2,7 @@
   <div id="app">
     <div id="logos">
       <p>
-        <img src="@/assets/vortice-logo.gif" class="picture small">
+        <img src="@/assets/vortice-logo.gif" style="width: 100px; height: auto;">
       </p>
     </div>
     <router-view/>
