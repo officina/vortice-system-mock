@@ -1,8 +1,8 @@
 <template>
   <div class="about">
-    <div class="loading" v-if="loading">
+    <!--<div class="loading" v-if="loading">
       Loading...
-    </div>
+    </div>-->
     <div v-if="system">
       <system :system="system" :owner="getOwner()"></system>
       <b-container fluid>
@@ -52,6 +52,7 @@ export default {
         .then(responseData => {
           this.loading = false
           this.system = responseData
+          this.error = ''
         }).catch(error => {
           this.loading = false
           this.error = error.message
