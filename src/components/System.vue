@@ -48,15 +48,7 @@
                     </b-row>
                     <b-row class="mb-3" fluid>
                         <b-col class="col-3 device-detail-title">
-                            Case id:
-                        </b-col>
-                        <b-col class="col-9 device-detail-content">
-                            {{ system.scenario.current.case_id }}
-                        </b-col>
-                    </b-row>
-                    <b-row class="mb-3" fluid>
-                        <b-col class="col-3 device-detail-title">
-                            Case ref:
+                            Scenario corrente:
                         </b-col>
                         <b-col class="col-9 device-detail-content">
                             {{ system.scenario.current.case_ref }}
@@ -64,18 +56,10 @@
                     </b-row>
                     <b-row class="mb-3" fluid>
                         <b-col class="col-3 device-detail-title">
-                            Scenario id:
+                            Prossimo scenario:
                         </b-col>
                         <b-col class="col-9 device-detail-content">
-                            {{ system.scenario.current.scenario_id }}
-                        </b-col>
-                    </b-row>
-                    <b-row class="mb-3" fluid>
-                        <b-col class="col-3 device-detail-title">
-                            Scenario ref:
-                        </b-col>
-                        <b-col class="col-9 device-detail-content">
-                            {{ system.scenario.current.scenario_ref }}
+                            {{ system.scenario.next.scenario_ref }}
                         </b-col>
                     </b-row>
                 </b-col>
