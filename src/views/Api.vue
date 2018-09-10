@@ -27,7 +27,11 @@ import System from '../components/System'
 
 export default {
   created () {
-    this.fetchSecureResource(this.$route.query.systemId)
+    setInterval(function () {
+      console.log('requesting system info')
+      this.fetchSecureResource()
+    }.bind(this), 5000)
+    this.fetchSecureResource()
   },
   name: 'about',
   components: {
@@ -42,9 +46,9 @@ export default {
     }
   },
   methods: {
-    fetchSecureResource (systemId) {
+    fetchSecureResource () {
       this.loading = true
-      $backend.fetchSecureResource(systemId)
+      $backend.fetchSecureResource(this.$route.query.systemId)
         .then(responseData => {
           this.loading = false
           this.system = responseData
@@ -61,9 +65,11 @@ export default {
       }
     },
     getOwner () {
-      for (let user of this.system.users) {
-        if (user.hasOwnProperty('userId') && user.userId === this.system.ownerId) {
-          return user
+      if (this.system.users !== undefined) {
+        for (let user of this.system.users) {
+          if (user.hasOwnProperty('userId') && user.userId === this.system.ownerId) {
+            return user
+          }
         }
       }
     }

@@ -6,6 +6,30 @@
                     <!--USER INFO ROW-->
                     <b-row class="mb-3" fluid>
                         <b-col class="col-3 device-detail-title">
+                            GENERAL INFO
+                        </b-col>
+                    </b-row>
+                    <b-row class="mb-3" fluid>
+                        <b-col class="col-3 device-detail-title">
+                            System name:
+                        </b-col>
+                        <b-col class="col-9 device-detail-content">
+                            {{ system.label }}
+                        </b-col>
+                    </b-row>
+                    <b-row class="mb-3" fluid>
+                        <b-col class="col-3 device-detail-title">
+                            Location:
+                        </b-col>
+                        <b-col class="col-9 device-detail-content">
+                            {{ system.location !== undefined ? system.location.coordinates : "--"}}
+                        </b-col>
+                    </b-row>
+                </b-col>
+                <!--<b-col>
+                    &lt;!&ndash;USER INFO ROW&ndash;&gt;
+                    <b-row class="mb-3" fluid>
+                        <b-col class="col-3 device-detail-title">
                             OWNER INFO
                         </b-col>
                     </b-row>
@@ -33,7 +57,7 @@
                             {{ owner.lastName }}
                         </b-col>
                     </b-row>
-                </b-col>
+                </b-col>-->
                 <b-col>
                     <!--SCENARIO INFO ROW-->
                     <b-row class="mb-3" fluid>
