@@ -58,7 +58,7 @@
                         </b-col>
                     </b-row>
                 </b-col>-->
-                <b-col>
+                <b-col v-if="system.scenario">
                     <!--SCENARIO INFO ROW-->
                     <b-row class="mb-3" fluid>
                         <b-col class="col-3 device-detail-title">

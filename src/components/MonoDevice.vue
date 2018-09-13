@@ -37,7 +37,8 @@
                     </b-row>
 
                 </b-col>
-                <b-col class="col-6">
+                <b-col v-if="room" class="col-6">
+
                     <b-row class="mb-3">
                         <b-col md="6" class="device-detail-title">
                             Room:

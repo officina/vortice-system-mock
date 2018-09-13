@@ -48,7 +48,7 @@ export default {
   methods: {
     fetchSecureResource () {
       this.loading = true
-      $backend.fetchSecureResource(this.$route.query.systemId)
+      $backend.fetchSecureResource(this.$route.query.systemId, this.$route.query.env)
         .then(responseData => {
           this.loading = false
           this.system = responseData
@@ -59,9 +59,11 @@ export default {
         })
     },
     getRoom (roomId) {
-      for (let room of this.system.rooms) {
-        if (room.hasOwnProperty('id') && room.id === roomId) {
-          return room
+      if (this.system.rooms !== undefined) {
+        for (let room of this.system.rooms) {
+          if (room.hasOwnProperty('id') && room.id === roomId) {
+            return room
+          }
         }
       }
     },
