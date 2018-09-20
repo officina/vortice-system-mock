@@ -23,13 +23,17 @@ $axios.interceptors.response.use(function (response) {
 
 export default {
 
-  fetchResource () {
-    return $axios.get(`resource/xxx`)
+  fetchResource (systemID, environment) {
+    return $axios.get(`https://5hqo4qcoek.execute-api.eu-west-1.amazonaws.com/` + environment + `/vortice/public/systems/` + systemID)
       .then(response => response.data)
   },
 
-  fetchSecureResource () {
-    return $axios.get(`secure-resource/zzz`)
+  fetchSecureResource (systemID, environment) {
+    let url = `https://hxp1br9mpk.execute-api.eu-west-1.amazonaws.com/qa/vortice/public/systems/`
+    if (environment !== undefined && environment === 'dev') {
+      url = `https://9igb19rgr1.execute-api.eu-west-1.amazonaws.com/dev/vortice/public/systems/`
+    }
+    return $axios.get(url + systemID)
       .then(response => response.data)
   }
 }
