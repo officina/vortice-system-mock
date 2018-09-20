@@ -31,7 +31,7 @@ export default {
   fetchSecureResource (systemID, environment) {
     let url = `https://hxp1br9mpk.execute-api.eu-west-1.amazonaws.com/qa/vortice/public/systems/`
     if (environment !== undefined && environment === 'dev') {
-      url = `https://5hqo4qcoek.execute-api.eu-west-1.amazonaws.com/dev/vortice/public/systems/`
+      url = `https://9igb19rgr1.execute-api.eu-west-1.amazonaws.com/dev/vortice/public/systems/`
     }
     return $axios.get(url + systemID)
       .then(response => response.data)
