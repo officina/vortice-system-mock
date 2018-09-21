@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" class="container">
     <div id="logos">
       <p>
         <img src="@/assets/vortice-logo.gif" style="width: 100px; height: auto;">
