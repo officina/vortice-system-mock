@@ -24,3 +24,4 @@ selenium-debug.log
 *.sln
 *security-sgps.py
 *security_backend.py
+/package-lock.json
